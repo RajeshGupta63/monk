@@ -9,10 +9,10 @@ import Queue
 
 
 def send_mail_attachment(final_str):
-    emailfrom = "perfomance@.rivigo.com"
-    emailtousers = ["rajesh.gupta@rivigo.com"]
-    username = "raj21gupta@gmail.com"
-    password = "Asdf~1234"
+    emailfrom = "emailfrom"
+    emailtousers = ["recipients email"]
+    username = "email"
+    password = "password"
     msg = MIMEMultipart()
     msg["From"] = emailfrom
     msg["Subject"] = "Infra Optimization Report"
@@ -20,7 +20,7 @@ def send_mail_attachment(final_str):
     part1 = MIMEText(final_str, 'html')
     msg.attach(part1)
 
-    server = smtplib.SMTP("smtp.gmail.com:587")
+    server = smtplib.SMTP("SMTP address")
     server.starttls()
     server.login(username, password)
     for emailto in emailtousers:
@@ -246,9 +246,9 @@ def createHtml(complete_dict) :
 
 
 def computeInfraPerf(allBoxes) :
-    username_box = 'rg4145'
+    username_box = 'username'
     password_box = 'password'
-    key = paramiko.RSAKey.from_private_key_file("/Users/rivigo/.ssh/id_rsa")
+    key = paramiko.RSAKey.from_private_key_file("/path/.ssh/id_rsa")
     command_direct = 'top -bn 1'
     command_total_disk = 'df -h --total | grep total'
     check_day = str((datetime.datetime.today().day -1)).zfill(2) 
@@ -266,7 +266,7 @@ def computeInfraPerf(allBoxes) :
                 complete_dict = {}
                 try:
                		client = paramiko.SSHClient()
-                	proxy_command = paramiko.ProxyCommand('ssh -o VisualHostKey=no -W {}:22 rg4145@{}'.format(
+                	proxy_command = paramiko.ProxyCommand('ssh -o VisualHostKey=no -W {}:22 username@{}'.format(
                		 machine_ip , 'bastion'))
                 	client.set_missing_host_key_policy(paramiko.AutoAddPolicy()) 
                 	client.connect(machine_ip, username=username_box, pkey = key, sock=proxy_command)
@@ -333,9 +333,9 @@ def computeInfraPerf(allBoxes) :
     createHtml(info_dict)
 
 def mother():
-    allBoxes = ['10.0.0.32','10.0.3.161']
-    password = 'jenkins@123'
-    username = 'jenkins'
+    allBoxes = ['IP1','IP2']
+    password = 'password'
+    username = 'username'
     computeInfraPerf(allBoxes)
 
 if __name__ == "__main__":
