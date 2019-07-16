@@ -39,7 +39,7 @@ vi monk_infra_optimizer.py
 
 Update list of servers to be analysed  in section as command(,) seperated list
 
-allBoxes = ['10.0.0.32','10.0.3.216']
+allBoxes = ['IP1','IP2']
 
 Save the file
 
